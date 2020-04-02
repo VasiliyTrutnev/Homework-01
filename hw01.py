@@ -22,15 +22,10 @@ print(a, 'на', c, 'лет больше 18')
 
 a = input()
 b = input()
-if a != b:
-    print(b, '\n', a)
-else:
-    print(a,'\n', b)
-# либо так:
-a = input()
-b = input()
-c = b, a
-print(c)
+c = a
+a = b
+b = c
+print(a,'\n', b)
 
 
 # Задача-3: Напишите программу, вычисляющую корни квадратного уравнения вида
