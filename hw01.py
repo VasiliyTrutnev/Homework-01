@@ -45,7 +45,7 @@ if D > 0:
     x2 = (-b + math.sqrt(D))/2*a
     print(x1, x2)
 if D == 0:
-    x1 = -(b / 2*a)
+    x1 = -(b / (2*a))
     print(x1)
 if D < 0:
     print("Нет корней")
