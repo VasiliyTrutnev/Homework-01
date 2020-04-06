@@ -54,3 +54,11 @@ while a > 0:
         b = a % 10
     a = a // 10
 print(b)
+
+a = input('Введите число: ')
+b = 0
+for i in str(a):
+    i = int(i)
+    if i > b:
+        b = i
+print(b)
