@@ -7,9 +7,10 @@ x = 2.5
 equation = 'y = -12x + 11111140.2121'
 x = 2.5
 a = equation.split(' ')
-a[2] = -12 * x
+c = str(a[2])
+d = float(c[:-1])
 a[4] = float(a[4])
-b = a[2] + a[4]
+b = float(d * x) + a[4]
 print(b)
 
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
