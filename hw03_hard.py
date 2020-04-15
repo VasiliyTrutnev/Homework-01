@@ -30,6 +30,25 @@ date = '01.22.1001'
 date = '1.12.1001'
 date = '-2.10.3001'
 
+date1 = input('Введите дату через точку')
+date_lst = date1.split('.')
+print(date_lst)
+day = int(date_lst[0])
+month = int(date_lst[1])
+year = int(date_lst[2])
+long_month = [1, 3, 5, 7, 8, 10, 12]
+if day > 31 or day < 1:
+    print('Некорректно введен день!')
+elif month > 12 or month < 1:
+    print('Некорректно введен месяц!')
+elif year > 9999 or year < 1:
+    print('Некорректно введен год!')
+elif day != 2 and month != 2 and year != 4:
+    print('Некорректно введена дата!')
+elif month not in long_month and day > 30:
+    print('Некорректно введен день!')
+else:
+    print('Дата введена верно')
 
 # Задание-3: "Перевёрнутая башня" (Задача олимпиадного уровня)
 #
