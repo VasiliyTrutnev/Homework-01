@@ -6,9 +6,10 @@ def fibonacci(n, m):
     import math
     while n <= m :
         a = int((((1 + math.sqrt(5))/2)**n-((1 - math.sqrt(5))/2)**n)/(math.sqrt(5))) # Формула Бине
-        print(a)
+        lst =[]
+        lst.append(a)
         n += 1
-    return list(fibonacci(n, m))
+    return lst
 
 
 # Задача-2:
