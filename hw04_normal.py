@@ -3,13 +3,12 @@
 # Первыми элементами ряда считать цифры 1 1
 
 def fibonacci(n, m):
-  import math
-  while n <= m :
-    a = int((((1 + math.sqrt(5))/2)**n-((1 - math.sqrt(5))/2)**n)/(math.sqrt(5))) # Формула Бине
-    print(a)
-    n += 1
-       
-print(fibonacci(3, 7))
+    import math
+    while n <= m :
+        a = int((((1 + math.sqrt(5))/2)**n-((1 - math.sqrt(5))/2)**n)/(math.sqrt(5))) # Формула Бине
+        print(a)
+        n += 1
+    return list(fibonacci(n, m))
 
 
 # Задача-2:
@@ -24,7 +23,7 @@ def sort_to_max(origin_list):
             """Пузырьковый метод. Передвигается больший элемент в конец, путем сравнения"""
             if origin_list[x] > origin_list[x + 1]:
                 origin_list[x], origin_list[x + 1] = origin_list[x + 1], origin_list[x]
-    print(origin_list)
+    return origin_list
 
 print(sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0]))
 
@@ -32,16 +31,11 @@ print(sort_to_max([2, 10, -12, 2.5, 20, -11, 4, 4, 0]))
 # Напишите собственную реализацию стандартной функции filter.
 # Разумеется, внутри нельзя использовать саму функцию filter.
 
-lst = [1, 2, 3, 4, 3, 56, 3, 5]
-def ftr(a, lst):
-    result = []
-    for i in lst:
-        if i == a:
-            """а - функция, lst - последовательность. Если выполняется условие - элемент последовательности равен а, т.е. True , то список наполняется этим элементом"""
-            result.append(i)
-    print(result)
-
-print(ftr(3, lst))        
+def fltr(function, iterable):
+    return (item for item in iterable if function(item))
+ 
+ 
+print(list(fltr(lambda x: True if x % 2 == 0 else False,[1, 2, 3, 4, 5, 6, 7, 8, 9, 10])))        
 
 # Задача-4:
 # Даны четыре точки А1(х1, у1), А2(x2 ,у2), А3(x3 , у3), А4(х4, у4).
