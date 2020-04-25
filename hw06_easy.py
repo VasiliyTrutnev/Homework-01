@@ -20,9 +20,11 @@ try:
     a = float(input("a = "))
     b = float(input("b = "))
     c = avg(a, b)
-    print("Среднее геометрическое = {:.2f}".format(c))
 except ValueError:
-    print("Введено не числовое значение!")
+    print("Введено нечисловое значение!")
+
+print("Среднее геометрическое = {:.2f}".format(c))
+
 
 # Задача-2:
 # Напишите скрипт, создающий директории dir_1 - dir_9 в папке,
@@ -31,33 +33,40 @@ except ValueError:
 import os
 import sys
 
-dir_1 = 'c:/Users/Василий и Настенька/Desktop/Домашка BE/dir_1'
-dir_9 = 'c:/Users/Василий и Настенька/Desktop/Домашка BE/dir_9'
-def create_folder():
-    try:
-        os.mkdir(dir_1)
-        os.mkdir(dir_9)
-    except OSError:
-        print ("Создать директорию %s не удалось" % dir_1, dir_9)
-    else:
-        print ("Успешно создана директория %s " % dir_1, dir_9)
-def del_folder():
-    try:
-        os.rmdir(dir_1)
-        os.rmdir(dir_9)
-    except OSError:
-        print ("Удалить директорию %s не удалось" % dir_1, dir_9)
-    else:
-        print ("Успешно удалена директория %s " % dir_1, dir_9)
 
+def create_folder():
+    dir_name = input()
+    dir_path = os.path.join(os.getcwd(), dir_name)
+    try:
+        os.mkdir(dir_path)
+        print('директория {} создана'.format(dir_name))
+    except FileExistsError:
+        print('директория {} уже существует'.format(dir_name))
+
+create_folder()
+
+    
+def del_folder():
+    dir_name = input()
+    dir_path = os.path.join(os.getcwd(), dir_name)
+    try:
+        os.rmdir(dir_path)
+        print('директория {} удалена'.format(dir_name))
+    except FileNotFoundError:
+        print('директория {} не найдена'.format(dir_name))
+del_folder()
 # Задача-3:
 # Напишите скрипт, отображающий папки текущей директории.
 def list_dir():
     path = 'c:/Users/Василий и Настенька/Desktop/Домашка BE'
     print(os.listdir(path))
+list_dir()
 
 # Задача-4:
 # Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.
 def copy_file():
+    file_name = input()
     import shutil
-    shutil.copy2("c:/Users/Василий и Настенька/Desktop/Домашка BE/hw06_easy.py", "c:/Users/Василий и Настенька/Desktop/Домашка BE/hw06_easy(1).py")
+    shutil.copy2(os.getcwd(), file_name)
+copy_file()
+
