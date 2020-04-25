@@ -20,10 +20,11 @@ try:
     a = float(input("a = "))
     b = float(input("b = "))
     c = avg(a, b)
+    print("Среднее геометрическое = {:.2f}".format(c))
 except ValueError:
     print("Введено нечисловое значение!")
 
-print("Среднее геометрическое = {:.2f}".format(c))
+
 
 
 # Задача-2:
@@ -60,7 +61,7 @@ if __name__ == '__main__':
 # Задача-3:
 # Напишите скрипт, отображающий папки текущей директории.
     def list_dir():
-        path = 'c:/Users/Василий и Настенька/Desktop/Домашка BE'
+        path = os.getcwd()
         print(os.listdir(path))
     list_dir()
 

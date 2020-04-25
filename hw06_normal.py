@@ -50,7 +50,7 @@ if __name__ == '__main__':
     def validate_dir_name():
         if not dir_name:
             raise ValueError("Необходимо указать имя директории вторым параметром")
-        
+
     def print_help():
         print("help - получение справки")
         print("mkdir <dir_name> - создание директории")
