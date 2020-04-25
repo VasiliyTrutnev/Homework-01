@@ -5,10 +5,8 @@
 # Исходная программа:
 def avg(a, b):
     """Вернуть среднее геометрическое чисел 'a' и 'b'.
-
     Параметры:
         - a, b (int или float).
-
     Результат:
         - float.
     """
@@ -40,45 +38,45 @@ print("Среднее геометрическое = {:.2f}".format(c))
 # Для решения данной задачи используйте алгоритмы из задания easy,
 # оформленные в виде соответствующих функций,
 # и импортированные в данный файл из easy.py
-import sys
-from hw06_easy import create_folder
-from hw06_easy import del_folder
-from hw06_easy import list_dir
+if __name__ == '__main__':
+    import sys
+    from hw06_easy import create_folder
+    from hw06_easy import del_folder
+    from hw06_easy import list_dir
 
-print('sys.argv =', sys.argv)
-
-def print_help():
-    print("help - получение справки")
-    print("mkdir <dir_name> - создание директории")
-    print("rmdir <dir_name> - удалить директорию")
-    print("open_folder <dir_name> - перейти в директорию")
-    print("list_dir - содержимое текущей папки")
-def open_folder():
-    dir_name = input()
-    os.chdir(dir_name)
-do = {
-    "open": open_folder(),
-    "help": print_help(),
-    "list": list_dir()
-    "mkdir": create_folder(),
-    "rmdir": del_folder()
-}
-
-try:
-    dir_name = sys.argv[2]
-except IndexError:
-    dir_name = None
-
-try:
-    key = sys.argv[1]
-except IndexError:
-    key = None
+    print('sys.argv =', sys.argv)
 
 
-if key:
-    do_func = do.get(key, None)
-    if do_func is not None:
-        do_func()
+    def validate_dir_name():
+        if not dir_name:
+            raise ValueError("Необходимо указать имя директории вторым параметром")
+        
+    def print_help():
+        print("help - получение справки")
+        print("mkdir <dir_name> - создание директории")
+        print("rmdir <dir_name> - удалить директорию")
+        print("open_folder <dir_name> - перейти в директорию")
+        print("list_dir - содержимое текущей папки")
+    def open_folder():
+        dir_name = input()
+        os.chdir(dir_name)
+    do = dict(open=open_folder(), help=print_help(), list=list_dir(), mkdir=create_folder(), rmdir=del_folder())
+
+    try:
+        dir_name = sys.argv[2]
+    except IndexError:
+        dir_name = None
+
+    try:
+        key = sys.argv[1]
+    except IndexError:
+        key = None
+
+
+    if key:
+        do_func = do.get(key, None)
+        if do_func is not None:
+            do_func()
     else:
         print("Задан неверный ключ")
         print("Укажите ключ help для получения справки")
