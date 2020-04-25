@@ -33,29 +33,31 @@ import sys
 
 dir_1 = 'c:/Users/Василий и Настенька/Desktop/Домашка BE/dir_1'
 dir_9 = 'c:/Users/Василий и Настенька/Desktop/Домашка BE/dir_9'
-try:
-    os.mkdir(dir_1)
-    os.mkdir(dir_9)
-except OSError:
-    print ("Создать директорию %s не удалось" % dir_1, dir_9)
-else:
-    print ("Успешно создана директория %s " % dir_1, dir_9)
-
-try:
-    os.rmdir(dir_1)
-    os.rmdir(dir_9)
-except OSError:
-    print ("Удалить директорию %s не удалось" % dir_1, dir_9)
-else:
-    print ("Успешно удалена директория %s " % dir_1, dir_9)
+def create_folder():
+    try:
+        os.mkdir(dir_1)
+        os.mkdir(dir_9)
+    except OSError:
+        print ("Создать директорию %s не удалось" % dir_1, dir_9)
+    else:
+        print ("Успешно создана директория %s " % dir_1, dir_9)
+def del_folder():
+    try:
+        os.rmdir(dir_1)
+        os.rmdir(dir_9)
+    except OSError:
+        print ("Удалить директорию %s не удалось" % dir_1, dir_9)
+    else:
+        print ("Успешно удалена директория %s " % dir_1, dir_9)
 
 # Задача-3:
 # Напишите скрипт, отображающий папки текущей директории.
-
-path = 'c:/Users/Василий и Настенька/Desktop/Домашка BE'
-print(os.listdir(path))
+def list_dir():
+    path = 'c:/Users/Василий и Настенька/Desktop/Домашка BE'
+    print(os.listdir(path))
 
 # Задача-4:
 # Напишите скрипт, создающий копию файла, из которого запущен данный скрипт.
-import shutil
-shutil.copy2("c:/Users/Василий и Настенька/Desktop/Домашка BE/hw06_easy.py", "c:/Users/Василий и Настенька/Desktop/Домашка BE/hw06_easy(1).py")
+def copy_file():
+    import shutil
+    shutil.copy2("c:/Users/Василий и Настенька/Desktop/Домашка BE/hw06_easy.py", "c:/Users/Василий и Настенька/Desktop/Домашка BE/hw06_easy(1).py")
