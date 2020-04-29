@@ -1,5 +1,6 @@
 # Задача-1: Написать класс для фигуры-треугольника, заданного координатами трех точек.
 # Определить методы, позволяющие вычислить: площадь, высоту и периметр фигуры
+from math import sqrt
 class Triangle:
     def __init__(self, a1, a2, b1, b2, c1, c2):
         self.a1 = a1
@@ -15,7 +16,6 @@ class Triangle:
         return s
 
     def height(self):
-        from math import sqrt
         def S(self):
             x = ((self.b1 - self.a1) * (self.c2 - self.a2)) - ((self.c1 - self.a1) * (self.b2 - self.a2))
             s = abs(x) / 2
@@ -28,7 +28,6 @@ class Triangle:
         return h
 
     def P(self):
-        from math import sqrt
         ab = sqrt(((self.b1 - self.a1) ** 2) + ((self.b2 - self.a2)**2))
         bc = sqrt(((self.c1 - self.b1) ** 2) + ((self.c2 - self.b2)**2))
         ac = sqrt(((self.c1 - self.a1) ** 2) + ((self.c2 - self.a2)**2))
@@ -52,7 +51,6 @@ class Trapeze:
         self.d2 = d2
 
     def equilateral(self):
-        from math import sqrt
         ac = sqrt(((self.c1 - self.a1) ** 2) + ((self.c2 - self.a2) ** 2))
         bd = sqrt(((self.d1 - self.b1) ** 2) + ((self.d2 - self.b2) ** 2))
         if ac == bd:
@@ -61,7 +59,6 @@ class Trapeze:
             print('Неравнобокая')
 
     def len_sides(self):
-        from math import sqrt
         bc = sqrt(((self.c1 - self.b1) ** 2) + ((self.c2 - self.b2) ** 2))
         ad = sqrt(((self.d1 - self.a1) ** 2) + ((self.d2 - self.a2) ** 2))
         ab = sqrt(((self.b1 - self.a1) ** 2) + ((self.b2 - self.a2) ** 2))
@@ -69,7 +66,6 @@ class Trapeze:
         return bc, ad, ab, cd
 
     def P(self):
-        from math import sqrt
         bc = sqrt(((self.c1 - self.b1) ** 2) + ((self.c2 - self.b2) ** 2))
         ad = sqrt(((self.d1 - self.a1) ** 2) + ((self.d2 - self.a2) ** 2))
         ab = sqrt(((self.b1 - self.a1) ** 2) + ((self.b2 - self.a2) ** 2))
@@ -78,7 +74,6 @@ class Trapeze:
         return p
 
     def S(self):
-        from math import sqrt
         bc = sqrt(((self.c1 - self.b1) ** 2) + ((self.c2 - self.b2) ** 2))
         ad = sqrt(((self.d1 - self.a1) ** 2) + ((self.d2 - self.a2) ** 2))
         ab = sqrt(((self.b1 - self.a1) ** 2) + ((self.b2 - self.a2) ** 2))
