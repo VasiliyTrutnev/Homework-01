@@ -16,15 +16,10 @@ class Triangle:
         return s
 
     def height(self):
-        def S(self):
-            x = ((self.b1 - self.a1) * (self.c2 - self.a2)) - ((self.c1 - self.a1) * (self.b2 - self.a2))
-            s = abs(x) / 2
-            return s
-        def S2(fn, x):
-            from math import sqrt
-            return fn * x
+        x = self.S()
+        z = x * 2
         bc = sqrt(((self.c1 - self.b1) ** 2) + ((self.c2 - self.b2)**2))
-        h = S2(S(self), 2) / bc
+        h = z / bc
         return h
 
     def P(self):
