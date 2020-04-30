@@ -53,9 +53,49 @@ class Teacher(People):
         return self.subject
 
     def get_classes(self):
-        return self.class_rooms
+        return self.rooms
+
+if __name__ == '__main__':
+    class_rooms = ['5 А', '4 В', '8 Б']
+    parents = [People("Сидоров", "Иван", "Игоревич"),
+               People("Сидорова", "Татьяна", "Максимовна"),
+               People("Иванов", "Игорь", "Александрович"),
+               People("Иванова", "Ирина", "Александровна"),
+               People("Петров", "Николай", "Александрович"),
+               People("Петрова", "Светлана", "Николаевна")]
+    students = [Student("Иванов", "Александр", "Игоревич", parents[3], parents[2], class_rooms[0],),
+                Student("Сидоров", "Петр", 'Иванович', parents[1], parents[0], class_rooms[2]),
+                Student("Петров", "Иван", 'Николаевич', parents[5], parents[4], class_rooms[1])]
+    teachers = [Teacher("Сидоров", "Иван", "Игоревич", [class_rooms[0], class_rooms[1]], 'Математика'),
+                Teacher("Иванов", "Игорь", "Александрович", [class_rooms[2], class_rooms[1]], 'История'),
+                Teacher("Петров", "Николай", "Александрович", [class_rooms[0], class_rooms[2]], 'Английский')]
+
+# Получить полный список всех классов школы
+st = [i.get_class_room() for i in students]
+print(st)
+
+# Получить список всех учеников в указанном классе(каждый ученик отображается в формате "Фамилия И.О.")
+cl_room = '4 В'
+st_list = [i.short_name() for i in students if i.get_class_room() == cl_room]
+print(st_list)
+
+# 3. Получить список всех предметов указанного ученика (Ученик --> Класс --> Учителя --> Предметы)
+student = students[0]
+t_list = [i for i in teachers if student.get_class_room() in i.get_classes()]
+
+t_names = [i.full_name() for i in t_list]
+subj = [i.get_subject() for i in t_list]
+print(f"{student.full_name()} {' --> '} {student.get_class_room()} {' --> '} {t_names} {' --> '} "
+      f"{subj}")
 
 
+# 4. Узнать ФИО родителей указанного ученика
+his_parents = student.get_parents()
+print(his_parents)
+
+# 5. Получить список всех Учителей, преподающих в указанном классе
+teach_list = [i.full_name() for i in teachers if cl_room in i.get_classes()]
+print(teach_list)
 
 
 
