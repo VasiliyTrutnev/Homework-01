@@ -5,7 +5,7 @@
 import abc
 
 
-class Enterprise(metaclass=ABCMeta):
+class Enterprise(metaclass= ABCMeta):
     @abc.abstractmethod
     def production(self):
         pass
@@ -65,7 +65,7 @@ class Enterprise_Logistic(Logistic):
 
 
 class People:
-    def (self, surname, name, father_name, birth_date, telephone_number):
+    def data(self, surname, name, father_name, birth_date, telephone_number):
         self.surname = surname
         self.name = name
         self.father_name = father_name
@@ -84,13 +84,13 @@ class MixinPep:
 
 
 class Employees(MixinPep, People):
-    def (self, ID, code, salary):
+    def EmpData(self, ID, code, salary):
         self.ID = ID
         self.code = code
         self.salary = salary
 
     def salary_list(self):
-        return [{self.short_name()}{self.salary}]
+        return [self.short_name(), self.salary]
 
     def department_code(self):
         if self.code == 1:
