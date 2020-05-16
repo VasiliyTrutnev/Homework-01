@@ -90,7 +90,7 @@ class Employees(MixinPep, People):
         self.salary = salary
 
     def salary_list(self):
-        return [{people().short_name()}{self.salary}]
+        return [{self.short_name()}{self.salary}]
 
     def department_code(self):
         if self.code == 1:
