@@ -27,6 +27,7 @@ class MessageBuilder:
             else:
                 setattr(self, key, val)
 
+    @classmethod
     def encode_to_json(self):
         """
         Кодируем объект в json
@@ -34,6 +35,7 @@ class MessageBuilder:
         """
         return JSONMessageEncoder().encode(self)
 
+    @classmethod
     def get_object_of_json(json_obj):
         """
         Декодируем из json в MessageBuilder
@@ -41,6 +43,7 @@ class MessageBuilder:
         """
         return json.JSONDecoder(object_hook=MessageBuilder).decode(json_obj)
 
+    @classmethod
     def create_presence_message(name, time=time.ctime()):
         """
         Формирует сообщение о присутствии(presence message)
@@ -53,6 +56,7 @@ class MessageBuilder:
                                    {"name": name,
                                     "status": "here"}})
 
+    @classmethod
     def create_response_message(code, alert=None):
         """
         Формирует сообщение ответа сервера (response message)

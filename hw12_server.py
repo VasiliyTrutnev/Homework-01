@@ -7,7 +7,7 @@ from JIM import MessageBuilder
 class Server:
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    def __init__(self, host='localhost', port=9090):
+    def __init__(self, host='localhost', port=8008):
         self.s.bind((host, port))
         print("Server started")
 

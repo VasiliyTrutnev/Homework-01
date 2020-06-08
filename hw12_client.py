@@ -22,7 +22,6 @@ class Client:
         while data is None:
             data = self.s.recvfrom(1024)
 
-    @staticmethod
     def receiving(self, response):
         response = response.decode('ascii')
         print(response)
@@ -49,14 +48,10 @@ if __name__ == '__main__':
 
     recv_thread1 = threading.Thread(target=client.run_client(), args=name)
     recv_thread2 = threading.Thread(target=client.receive_data(), args=name)
-    send_thread = threading.Thread(target=client.sending(), args=type)
+    send_thread = threading.Thread(target=client.sending())
     recv_thread1.start()
     recv_thread2.start()
     send_thread.start()
     recv_thread1.join()
     recv_thread2.join()
     send_thread.join()
-
-
-
-
