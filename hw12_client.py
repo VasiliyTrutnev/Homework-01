@@ -34,7 +34,7 @@ class Client:
         if self.name is None:
             self.name = input("Your name: ")
         make_message = MessageBuilder.create_presence_message(self.name)
-        make_message_json = make_message.encode_to_json()
+        make_message_json = make_message.encode_to_json(self)
         self.s.send(make_message_json.encode('ascii'))
 
     def quit(self):

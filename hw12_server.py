@@ -7,7 +7,7 @@ from JIM import MessageBuilder
 class Server:
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    def __init__(self, host='localhost', port=8008):
+    def __init__(self, host='localhost', port=8000):
         self.s.bind((host, port))
         print("Server started")
 
@@ -50,3 +50,15 @@ class Server:
 if __name__ == '__main__':
     server = Server()
     server.run_server()
+
+
+
+    recv_thread1 = threading.Thread(target=server.run_server())
+    recv_thread2 = threading.Thread(target=server.j_message())
+    send_thread = threading.Thread(target=server.send_response())
+    recv_thread1.start()
+    recv_thread2.start()
+    send_thread.start()
+    recv_thread1.join()
+    recv_thread2.join()
+    send_thread.join()

@@ -27,7 +27,7 @@ class MessageBuilder:
             else:
                 setattr(self, key, val)
 
-    @classmethod
+    @staticmethod
     def encode_to_json(self):
         """
         Кодируем объект в json
@@ -35,7 +35,7 @@ class MessageBuilder:
         """
         return JSONMessageEncoder().encode(self)
 
-    @classmethod
+    @staticmethod
     def get_object_of_json(json_obj):
         """
         Декодируем из json в MessageBuilder
@@ -43,7 +43,7 @@ class MessageBuilder:
         """
         return json.JSONDecoder(object_hook=MessageBuilder).decode(json_obj)
 
-    @classmethod
+    @staticmethod
     def create_presence_message(name, time=time.ctime()):
         """
         Формирует сообщение о присутствии(presence message)
@@ -56,7 +56,7 @@ class MessageBuilder:
                                    {"name": name,
                                     "status": "here"}})
 
-    @classmethod
+    @staticmethod
     def create_response_message(code, alert=None):
         """
         Формирует сообщение ответа сервера (response message)
@@ -68,25 +68,27 @@ class MessageBuilder:
 
 
 if __name__ =='__main__':
+    print(MessageBuilder.__dict__)
+
     # ПРИМЕР ИСПОЛЬЗОВАНИЯ
-    msg = MessageBuilder({"response": 200, "alert": "default"})
-    name = "User123"
-    msg2 = MessageBuilder(
-        {"action": "presence", "time": time.ctime(), "user": {"name": name, "status": "here"}})
-    msg3 = MessageBuilder.create_presence_message(name="newUser")
-    msg4 = MessageBuilder.create_response_message(200, "default")
+   # msg = MessageBuilder({"response": 200, "alert": "default"})
+ #   name = "User123"
+  #  msg2 = MessageBuilder(
+   #     {"action": "presence", "time": time.ctime(), "user": {"name": name, "status": "here"}})
+    #msg3 = MessageBuilder.create_presence_message(name="newUser")
+    #msg4 = MessageBuilder.create_response_message(200, "default")
 
     # Выводим в json файлы чисто для примера, на практике смысла в этом особо нет
-    with open('msg.json', 'w') as outfile:
-        json.dump(msg.__dict__, outfile)  # msg.__dict__ - Применимо только к простым объектам
-    with open('msg2.json', 'w') as outfile:
-        json.dump(JSONMessageEncoder().encode(msg2), outfile)
-    with open('msg3.json', 'w') as outfile:
-        json.dump(JSONMessageEncoder().encode(msg3), outfile)
-    with open('msg4.json', 'w') as outfile:
-        json.dump(JSONMessageEncoder().encode(msg4), outfile)
+  #  with open('msg.json', 'w') as outfile:
+   #     json.dump(msg.__dict__, outfile)  # msg.__dict__ - Применимо только к простым объектам
+   # with open('msg2.json', 'w') as outfile:
+    #    json.dump(JSONMessageEncoder().encode(msg2), outfile)
+   # with open('msg3.json', 'w') as outfile:
+    #    json.dump(JSONMessageEncoder().encode(msg3), outfile)
+   # with open('msg4.json', 'w') as outfile:
+    #    json.dump(JSONMessageEncoder().encode(msg4), outfile)
     # Декодируем сообщение из json обратно в
-    json_exemple_msg = JSONMessageEncoder().encode(msg2)
-    decoded_obj = json.JSONDecoder(object_hook=MessageBuilder).decode(json_exemple_msg)
+   # json_exemple_msg = JSONMessageEncoder().encode(msg2)
+   # decoded_obj = json.JSONDecoder(object_hook=MessageBuilder).decode(json_exemple_msg)
     # можем обратиться по нужным атрибутам
-    print(decoded_obj.action)
+    #print(decoded_obj.action)
